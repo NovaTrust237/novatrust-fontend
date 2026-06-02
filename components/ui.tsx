@@ -12,7 +12,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = '', 
   ...props 
 }) => {
-  const baseStyles = "w-full py-3 px-4 rounded-lg font-bold transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseStyles = "w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-bold text-sm sm:text-base transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variants = {
     primary: "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white shadow-lg shadow-blue-500/30",
@@ -34,13 +34,13 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 export const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <div className={`bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-xl ${className}`}>
+  <div className={`bg-slate-800 border border-slate-700 rounded-xl p-4 sm:p-6 shadow-xl ${className}`}>
     {children}
   </div>
 );
 
 const fieldBase =
-  "w-full rounded-lg px-4 py-2.5 text-sm bg-slate-800/60 border border-slate-600/70 text-slate-100 " +
+  "w-full rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm bg-slate-800/60 border border-slate-600/70 text-slate-100 " +
   "placeholder:text-slate-500 outline-none transition-all duration-150 " +
   "hover:border-slate-500 hover:bg-slate-800 " +
   "focus:bg-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 " +
@@ -111,12 +111,12 @@ const Toast: React.FC<ToastProps> = ({ message, type, onClose }) => {
   }, [onClose]);
 
   return (
-    <div className={`${bgColor} text-white px-4 py-3 rounded-lg shadow-lg max-w-md w-full`}>
-      <div className="flex justify-between items-center">
+    <div className={`${bgColor} text-white px-3 sm:px-4 py-2 sm:py-3 rounded-lg shadow-lg max-w-md w-full text-sm sm:text-base`}>
+      <div className="flex justify-between items-center gap-3">
         <span>{message}</span>
         <button
           onClick={onClose}
-          className="text-white hover:text-gray-200 text-sm font-bold"
+          className="text-white hover:text-gray-200 text-lg font-bold flex-shrink-0"
         >
           ✕
         </button>

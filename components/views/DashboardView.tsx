@@ -50,26 +50,26 @@ const DashboardView: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold">Bonjour, {user.name || 'cher client'} 👋</h1>
-        <p className="text-slate-400 text-sm mt-1">Voici un aperçu de votre activité</p>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Bonjour, {user.name || 'cher client'} 👋</h1>
+        <p className="text-slate-400 text-xs sm:text-sm mt-1">Voici un aperçu de votre activité</p>
       </div>
 
       {/* Balance card */}
       <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700 relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-4 opacity-10">
-          <Wallet className="w-32 h-32 text-blue-500" />
+        <div className="absolute top-0 right-0 p-2 sm:p-4 opacity-10">
+          <Wallet className="w-20 h-20 sm:w-32 sm:h-32 text-blue-500" />
         </div>
         <div className="relative z-10">
-          <p className="text-slate-400 text-sm font-medium mb-1">Solde disponible</p>
-          <h2 className="text-4xl font-bold text-white mb-3">
+          <p className="text-slate-400 text-xs font-medium mb-1">Solde disponible</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
             {Number(user.balance ?? 0).toLocaleString('fr-FR')}{' '}
-            <span className="text-blue-500 text-2xl">XAF</span>
+            <span className="text-blue-500 text-lg sm:text-2xl">XAF</span>
           </h2>
           {!user.activated && (
-            <div className="flex items-center gap-2 text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2 text-sm">
-              <Lock className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-lg px-2 sm:px-3 py-2 text-xs sm:text-sm">
+              <Lock className="w-4 h-4 flex-shrink-0" />
               <span>
                 Votre compte n'est pas activé. Activez-le pour débloquer toutes les sections.
               </span>
@@ -79,51 +79,51 @@ const DashboardView: React.FC = () => {
       </Card>
 
       {/* Quick actions */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3">
         <button
           onClick={() => setContactOpen(true)}
-          className="bg-slate-800 hover:bg-slate-750 border border-emerald-500/30 p-4 rounded-xl flex flex-col items-center gap-2 transition"
+          className="bg-slate-800 hover:bg-slate-750 border border-emerald-500/30 p-2 sm:p-4 rounded-xl flex flex-col items-center gap-2 transition"
         >
-          <div className="bg-emerald-500/20 p-2.5 rounded-full">
-            <ArrowDownLeft className="text-emerald-400 w-5 h-5" />
+          <div className="bg-emerald-500/20 p-1.5 sm:p-2.5 rounded-full">
+            <ArrowDownLeft className="text-emerald-400 w-4 h-4 sm:w-5 sm:h-5" />
           </div>
-          <span className="text-sm font-semibold text-white">Dépôt</span>
+          <span className="text-xs sm:text-sm font-semibold text-white">Dépôt</span>
         </button>
         <button
           onClick={() => setWithdrawOpen(true)}
-          className="bg-slate-800 hover:bg-slate-750 border border-red-500/30 p-4 rounded-xl flex flex-col items-center gap-2 transition"
+          className="bg-slate-800 hover:bg-slate-750 border border-red-500/30 p-2 sm:p-4 rounded-xl flex flex-col items-center gap-2 transition"
         >
-          <div className="bg-red-500/20 p-2.5 rounded-full">
-            <ArrowUpRight className="text-red-400 w-5 h-5" />
+          <div className="bg-red-500/20 p-1.5 sm:p-2.5 rounded-full">
+            <ArrowUpRight className="text-red-400 w-4 h-4 sm:w-5 sm:h-5" />
           </div>
-          <span className="text-sm font-semibold text-white">Retrait</span>
+          <span className="text-xs sm:text-sm font-semibold text-white">Retrait</span>
         </button>
         <Link
           to="/app/scalping"
-          className="bg-slate-800 hover:bg-slate-750 border border-blue-500/30 p-4 rounded-xl flex flex-col items-center gap-2 transition"
+          className="bg-slate-800 hover:bg-slate-750 border border-blue-500/30 p-2 sm:p-4 rounded-xl flex flex-col items-center gap-2 transition"
         >
-          <div className="bg-blue-500/20 p-2.5 rounded-full">
-            <Zap className="text-blue-400 w-5 h-5" />
+          <div className="bg-blue-500/20 p-1.5 sm:p-2.5 rounded-full">
+            <Zap className="text-blue-400 w-4 h-4 sm:w-5 sm:h-5" />
           </div>
-          <span className="text-sm font-semibold text-white">Scalping</span>
+          <span className="text-xs sm:text-sm font-semibold text-white">Scalping</span>
         </Link>
         <Link
           to="/app/loans"
-          className="bg-slate-800 hover:bg-slate-750 border border-amber-500/30 p-4 rounded-xl flex flex-col items-center gap-2 transition"
+          className="bg-slate-800 hover:bg-slate-750 border border-amber-500/30 p-2 sm:p-4 rounded-xl flex flex-col items-center gap-2 transition"
         >
-          <div className="bg-amber-500/20 p-2.5 rounded-full">
-            <Landmark className="text-amber-400 w-5 h-5" />
+          <div className="bg-amber-500/20 p-1.5 sm:p-2.5 rounded-full">
+            <Landmark className="text-amber-400 w-4 h-4 sm:w-5 sm:h-5" />
           </div>
-          <span className="text-sm font-semibold text-white">Prêts</span>
+          <span className="text-xs sm:text-sm font-semibold text-white">Prêts</span>
         </Link>
         <Link
           to="/app/grants"
-          className="bg-slate-800 hover:bg-slate-750 border border-pink-500/30 p-4 rounded-xl flex flex-col items-center gap-2 transition"
+          className="bg-slate-800 hover:bg-slate-750 border border-pink-500/30 p-2 sm:p-4 rounded-xl flex flex-col items-center gap-2 transition"
         >
-          <div className="bg-pink-500/20 p-2.5 rounded-full">
-            <Gift className="text-pink-400 w-5 h-5" />
+          <div className="bg-pink-500/20 p-1.5 sm:p-2.5 rounded-full">
+            <Gift className="text-pink-400 w-4 h-4 sm:w-5 sm:h-5" />
           </div>
-          <span className="text-sm font-semibold text-white">Subventions</span>
+          <span className="text-xs sm:text-sm font-semibold text-white">Subventions</span>
         </Link>
       </div>
 
@@ -132,9 +132,9 @@ const DashboardView: React.FC = () => {
 
       {/* History */}
       <Card className="bg-slate-800 border-slate-700">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-white">Historique des opérations</h3>
-          <TrendingUp className="w-5 h-5 text-slate-500" />
+        <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+          <h3 className="font-bold text-white text-sm sm:text-base">Historique des opérations</h3>
+          <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
         </div>
 
         {loading ? (

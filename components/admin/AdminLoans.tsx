@@ -46,26 +46,26 @@ const AdminLoans: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl md:text-3xl font-bold">Demandes de prêts</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Demandes de prêts</h1>
 
       <Card>
         {loading ? (
-          <p className="text-slate-400 text-center py-8">Chargement...</p>
+          <p className="text-slate-400 text-center py-6 sm:py-8 text-sm">Chargement...</p>
         ) : loans.length === 0 ? (
-          <p className="text-slate-400 text-center py-8">Aucune demande.</p>
+          <p className="text-slate-400 text-center py-6 sm:py-8 text-sm">Aucune demande.</p>
         ) : (
-          <ul className="space-y-3">
+          <ul className="space-y-2 sm:space-y-3">
             {loans.map((l) => (
-              <li key={l.id} className="bg-slate-900 border border-slate-700 rounded-lg p-4">
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <p className="font-semibold text-white">
+              <li key={l.id} className="bg-slate-900 border border-slate-700 rounded-lg p-3 sm:p-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-white text-sm sm:text-base truncate">
                       {l.full_name}{' '}
                       <span className="text-slate-500 text-xs">({l.phone})</span>
                     </p>
-                    <p className="text-sm text-slate-400 mt-1">
-                      {l.amount_cfa.toLocaleString('fr-FR')} XAF sur {l.duration_months} mois — mensualité {l.monthly_payment_cfa.toLocaleString('fr-FR')} XAF
+                    <p className="text-xs sm:text-sm text-slate-400 mt-1">
+                      {l.amount_cfa.toLocaleString('fr-FR')} XAF sur {l.duration_months} mois — {l.monthly_payment_cfa.toLocaleString('fr-FR')} XAF/mois
                     </p>
                     <p className="text-xs text-slate-500 mt-1">Objet : {l.purpose}</p>
                     {l.id_document_path && (
@@ -75,13 +75,13 @@ const AdminLoans: React.FC = () => {
                         rel="noreferrer"
                         className="text-xs text-blue-400 underline mt-1 inline-block"
                       >
-                        Voir la pièce d'identité
+                        Pièce d'identité
                       </a>
                     )}
                   </div>
-                  <div className="flex flex-col items-end gap-2">
+                  <div className="flex flex-col items-start sm:items-end gap-1.5 sm:gap-2 flex-shrink-0">
                     <span
-                      className={`text-xs px-2 py-1 rounded-full ${
+                      className={`text-xs px-2 py-1 rounded-full whitespace-nowrap ${
                         l.status === 'approved'
                           ? 'bg-emerald-500/20 text-emerald-300'
                           : l.status === 'rejected'
@@ -92,11 +92,11 @@ const AdminLoans: React.FC = () => {
                       {l.status}
                     </span>
                     {l.status === 'pending' && (
-                      <div className="flex gap-2">
-                        <Button variant="success" className="w-auto px-3 py-1.5 text-xs" onClick={() => updateStatus(l, 'approved')}>
+                      <div className="flex gap-1 sm:gap-2 w-full sm:w-auto">
+                        <Button variant="success" className="w-auto px-2 sm:px-3 py-1 text-xs" onClick={() => updateStatus(l, 'approved')}>
                           Approuver
                         </Button>
-                        <Button variant="danger" className="w-auto px-3 py-1.5 text-xs" onClick={() => updateStatus(l, 'rejected')}>
+                        <Button variant="danger" className="w-auto px-2 sm:px-3 py-1 text-xs" onClick={() => updateStatus(l, 'rejected')}>
                           Rejeter
                         </Button>
                       </div>

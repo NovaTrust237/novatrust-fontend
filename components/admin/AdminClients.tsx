@@ -85,67 +85,67 @@ const AdminClients: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between flex-wrap gap-3">
-        <h1 className="text-2xl md:text-3xl font-bold">Clients</h1>
-        <form onSubmit={onSearch} className="flex gap-2 w-full md:w-auto">
-          <div className="relative flex-1 md:w-64">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex items-center justify-between flex-col sm:flex-row gap-3">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Clients</h1>
+        <form onSubmit={onSearch} className="flex gap-2 w-full sm:w-auto">
+          <div className="relative flex-1 sm:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <Input
               placeholder="Nom ou téléphone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-10"
+              className="pl-10 text-sm"
             />
           </div>
-          <Button type="submit" className="w-auto px-4">OK</Button>
+          <Button type="submit" className="w-auto px-3 sm:px-4 text-sm">OK</Button>
         </form>
       </div>
 
-      {error && <p className="text-red-400">{error}</p>}
+      {error && <p className="text-red-400 text-sm">{error}</p>}
 
       <Card>
         {loading ? (
-          <p className="text-slate-400 text-center py-8">Chargement...</p>
+          <p className="text-slate-400 text-center py-6 sm:py-8 text-sm">Chargement...</p>
         ) : clients.length === 0 ? (
-          <p className="text-slate-400 text-center py-8">Aucun client.</p>
+          <p className="text-slate-400 text-center py-6 sm:py-8 text-sm">Aucun client.</p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full text-xs sm:text-sm">
               <thead>
                 <tr className="text-left text-slate-400 border-b border-slate-700">
-                  <th className="py-3 px-2">ID</th>
-                  <th className="py-3 px-2">Nom</th>
-                  <th className="py-3 px-2">Téléphone</th>
-                  <th className="py-3 px-2 text-right">Solde</th>
-                  <th className="py-3 px-2">Statut</th>
-                  <th className="py-3 px-2 text-right">Actions</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4">ID</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4">Nom</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4">Téléphone</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 text-right">Solde</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4">Statut</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {clients.map((c) => (
                   <tr key={c.id} className="border-b border-slate-700/50 hover:bg-slate-700/20">
-                    <td className="py-3 px-2 text-slate-500">#{c.id}</td>
-                    <td className="py-3 px-2 text-white">{c.name || '—'}</td>
-                    <td className="py-3 px-2 font-mono text-slate-300">{c.phone}</td>
-                    <td className="py-3 px-2 text-right font-semibold text-white">
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-500">#{c.id}</td>
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 text-white">{c.name || '—'}</td>
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono text-slate-300 text-xs sm:text-sm">{c.phone}</td>
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-semibold text-white">
                       {c.balance.toLocaleString('fr-FR')}
                     </td>
-                    <td className="py-3 px-2">
+                    <td className="py-2 sm:py-3 px-2 sm:px-4">
                       {c.activated ? (
                         <span className="text-emerald-400 text-xs">Activé</span>
                       ) : (
                         <span className="text-amber-400 text-xs">Non activé</span>
                       )}
                     </td>
-                    <td className="py-3 px-2">
-                      <div className="flex justify-end gap-2">
+                    <td className="py-2 sm:py-3 px-2 sm:px-4">
+                      <div className="flex justify-end gap-1 sm:gap-2">
                         <button
                           onClick={() => openAdjust(c, 'credit')}
-                          className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30"
+                          className="p-1.5 sm:p-2 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 text-sm"
                           title="Créditer"
                         >
-                          <Plus className="w-4 h-4" />
+                          <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                         <button
                           onClick={() => openAdjust(c, 'debit')}

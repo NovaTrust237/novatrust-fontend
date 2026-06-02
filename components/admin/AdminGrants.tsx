@@ -45,26 +45,26 @@ const AdminGrants: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl md:text-3xl font-bold">Demandes de subventions</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Demandes de subventions</h1>
 
       <Card>
         {loading ? (
-          <p className="text-slate-400 text-center py-8">Chargement...</p>
+          <p className="text-slate-400 text-center py-6 sm:py-8 text-sm">Chargement...</p>
         ) : grants.length === 0 ? (
-          <p className="text-slate-400 text-center py-8">Aucune demande.</p>
+          <p className="text-slate-400 text-center py-6 sm:py-8 text-sm">Aucune demande.</p>
         ) : (
-          <ul className="space-y-3">
+          <ul className="space-y-2 sm:space-y-3">
             {grants.map((g) => (
-              <li key={g.id} className="bg-slate-900 border border-slate-700 rounded-lg p-4">
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div className="flex-1 min-w-[260px]">
-                    <p className="font-semibold text-white">{g.project_title}</p>
-                    <p className="text-xs text-pink-300">{g.category} — {g.requested_amount_cfa.toLocaleString('fr-FR')} XAF</p>
+              <li key={g.id} className="bg-slate-900 border border-slate-700 rounded-lg p-3 sm:p-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-white text-sm sm:text-base">{g.project_title}</p>
+                    <p className="text-xs sm:text-sm text-pink-300">{g.category} — {g.requested_amount_cfa.toLocaleString('fr-FR')} XAF</p>
                     <p className="text-xs text-slate-500 mt-1">
                       Par {g.full_name} ({g.phone})
                     </p>
-                    <p className="text-sm text-slate-300 mt-2 line-clamp-3">{g.description}</p>
+                    <p className="text-xs sm:text-sm text-slate-300 mt-2 line-clamp-2 sm:line-clamp-3">{g.description}</p>
                     {g.id_document_path && (
                       <a
                         href={publicUrl(g.id_document_path)!}
@@ -72,13 +72,13 @@ const AdminGrants: React.FC = () => {
                         rel="noreferrer"
                         className="text-xs text-blue-400 underline mt-1 inline-block"
                       >
-                        Voir la pièce d'identité
+                        Pièce d'identité
                       </a>
                     )}
                   </div>
-                  <div className="flex flex-col items-end gap-2">
+                  <div className="flex flex-col items-start sm:items-end gap-1.5 sm:gap-2 flex-shrink-0">
                     <span
-                      className={`text-xs px-2 py-1 rounded-full ${
+                      className={`text-xs px-2 py-1 rounded-full whitespace-nowrap ${
                         g.status === 'approved'
                           ? 'bg-emerald-500/20 text-emerald-300'
                           : g.status === 'rejected'
@@ -89,11 +89,11 @@ const AdminGrants: React.FC = () => {
                       {g.status}
                     </span>
                     {g.status === 'pending' && (
-                      <div className="flex gap-2">
-                        <Button variant="success" className="w-auto px-3 py-1.5 text-xs" onClick={() => updateStatus(g, 'approved')}>
+                      <div className="flex gap-1 sm:gap-2 w-full sm:w-auto">
+                        <Button variant="success" className="w-auto px-2 sm:px-3 py-1 text-xs" onClick={() => updateStatus(g, 'approved')}>
                           Approuver
                         </Button>
-                        <Button variant="danger" className="w-auto px-3 py-1.5 text-xs" onClick={() => updateStatus(g, 'rejected')}>
+                        <Button variant="danger" className="w-auto px-2 sm:px-3 py-1 text-xs" onClick={() => updateStatus(g, 'rejected')}>
                           Rejeter
                         </Button>
                       </div>

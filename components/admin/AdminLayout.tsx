@@ -79,13 +79,13 @@ const AdminLayout: React.FC<Props> = ({ user, setUser }) => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-white">
-      <header className="md:hidden bg-slate-800 border-b border-slate-700 p-4 flex justify-between items-center sticky top-0 z-40">
+      <header className="md:hidden bg-slate-800 border-b border-slate-700 p-3 sm:p-4 flex justify-between items-center sticky top-0 z-40">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-6 h-6 text-blue-400" />
-          <span className="font-bold text-lg">Admin</span>
+          <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+          <span className="font-bold text-base sm:text-lg">Admin</span>
         </div>
         <button onClick={() => setOpen(!open)} className="p-2 rounded-lg hover:bg-slate-700">
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {open ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
         </button>
       </header>
 
@@ -93,7 +93,7 @@ const AdminLayout: React.FC<Props> = ({ user, setUser }) => {
         <aside
           className={`${
             open ? 'block' : 'hidden'
-          } md:block md:w-64 bg-slate-800 border-r border-slate-700 md:min-h-screen p-4 md:sticky md:top-0`}
+          } fixed md:relative inset-0 md:inset-auto md:block md:w-64 bg-slate-800 border-r border-slate-700 md:min-h-screen p-4 md:sticky md:top-0 z-30`}
         >
           <div className="hidden md:flex items-center gap-2 mb-8 px-2">
             <img src={LOGO} alt="NovaTrust" className="w-10 h-10" />
@@ -133,7 +133,7 @@ const AdminLayout: React.FC<Props> = ({ user, setUser }) => {
           </button>
         </aside>
 
-        <main className="flex-1 p-4 md:p-8 max-w-6xl">
+        <main className="flex-1 p-3 sm:p-6 md:p-8 max-w-6xl w-full">
           <Outlet />
         </main>
       </div>
