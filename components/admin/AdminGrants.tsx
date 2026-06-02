@@ -40,7 +40,7 @@ const AdminGrants: React.FC = () => {
 
   const publicUrl = (p: string | null) => {
     if (!p) return null;
-    const base = (import.meta as any).env?.VITE_API_PUBLIC_URL || 'http://127.0.0.1:8000';
+    const base = (import.meta as any).env?.VITE_API_PUBLIC_URL || 'https://novatrust-backend-production.up.railway.app';
     return `${base}/storage/${p}`;
   };
 
