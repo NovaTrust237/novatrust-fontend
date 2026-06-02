@@ -5,6 +5,7 @@ import { User } from '../types';
 import { Card, Input, Button } from './ui';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import { LOGO } from '../constants';
 
 interface LoginViewProps {
   setUser: (user: User) => void;
@@ -59,7 +60,7 @@ const LoginView: React.FC<LoginViewProps> = ({ setUser }) => {
       <Card className="w-full max-w-md relative z-10 border-t-4 border-t-blue-500">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mx-auto mb-4">
-            <img src="/logo.png" alt="NovaTrust" className="w-16 h-16" />
+            <img src={LOGO} alt="NovaTrust" className="w-16 h-16" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Connexion</h1>
           <p className="text-slate-400">Accédez à votre tableau de bord</p>

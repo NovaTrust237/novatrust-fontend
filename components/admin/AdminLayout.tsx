@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import api from '../../services/api';
 import { User } from '../../types';
+import { LOGO } from '../../constants';
 
 interface Props {
   user: User | null;
@@ -95,7 +96,7 @@ const AdminLayout: React.FC<Props> = ({ user, setUser }) => {
           } md:block md:w-64 bg-slate-800 border-r border-slate-700 md:min-h-screen p-4 md:sticky md:top-0`}
         >
           <div className="hidden md:flex items-center gap-2 mb-8 px-2">
-            <img src="/logo.png" alt="NovaTrust" className="w-10 h-10" />
+            <img src={LOGO} alt="NovaTrust" className="w-10 h-10" />
             <div>
               <span className="font-bold text-lg block leading-tight">NovaTrust</span>
               <span className="text-xs text-blue-300">Administration</span>

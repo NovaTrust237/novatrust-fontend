@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import api from '../services/api';
 import { User } from '../types';
+import { LOGO } from '../constants';
 
 interface Props {
   user: User | null;
@@ -77,7 +78,7 @@ const DashboardLayout: React.FC<Props> = ({ user, setUser }) => {
       {/* Mobile top bar */}
       <header className="md:hidden bg-slate-800 border-b border-slate-700 p-4 flex justify-between items-center sticky top-0 z-40">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="NovaTrust" className="w-8 h-8" />
+          <img src={LOGO} alt="NovaTrust" className="w-8 h-8" />
           <span className="font-bold text-lg">NovaTrust</span>
         </div>
         <button onClick={() => setOpen(!open)} className="p-2 rounded-lg hover:bg-slate-700">
@@ -93,7 +94,7 @@ const DashboardLayout: React.FC<Props> = ({ user, setUser }) => {
           } md:block md:w-64 bg-slate-800 border-r border-slate-700 md:min-h-screen p-4 md:sticky md:top-0`}
         >
           <div className="hidden md:flex items-center gap-2 mb-8 px-2">
-            <img src="/logo.png" alt="NovaTrust" className="w-10 h-10" />
+            <img src={LOGO} alt="NovaTrust" className="w-10 h-10" />
             <span className="font-bold text-xl">NovaTrust</span>
           </div>
 

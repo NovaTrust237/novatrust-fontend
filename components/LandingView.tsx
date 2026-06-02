@@ -2,6 +2,7 @@ import React from 'react';
 import { UserPlus, Zap, ChevronRight, TrendingUp } from 'lucide-react';
 import { Card } from './ui';
 import { useNavigate } from 'react-router-dom';
+import { LOGO } from '../constants';
 
 const LandingView: React.FC = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const LandingView: React.FC = () => {
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-20 p-6 flex justify-between items-center max-w-6xl mx-auto">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="NovaTrust" className="w-10 h-10" />
+          <img src={LOGO} alt="NovaTrust" className="w-10 h-10" />
           <span className="font-bold text-xl tracking-tight">NovaTrust</span>
         </div>
         <button 
